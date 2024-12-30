@@ -125,7 +125,7 @@ public class Main
             System.out.println("Enter grade: ");
             double grade = scanner.nextDouble();
             student.setGrade(grade);
-            System.out.println("Student grade updated successfully. Student Grade is " + grade);
+            System.out.println(String.format("Student grade updated successfully. Student Grade is %.0f", grade));
         } else {
             System.out.println("Student with ID " + studentId + " not found.");
         }

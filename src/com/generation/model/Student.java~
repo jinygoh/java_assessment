@@ -35,12 +35,6 @@ public class Student
         // end of TODO
     }
 
-    // added this myself
-    public List<Course> getCourses() {
-        return courses;
-    }
-    //
-
     //Registers an approved course for the student.
     public void registerApprovedCourse( Course course )
     {

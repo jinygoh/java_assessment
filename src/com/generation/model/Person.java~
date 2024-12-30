@@ -2,9 +2,6 @@ package com.generation.model;
 
 import java.util.Date;
 
-// A base class for Student with attributes like ID, name, email, and birthdate.
-//The Person class serves as a base class for other classes like Student and Instructor, providing common attributes that they can inherit.
-
 abstract public class Person
 {
     private final String id;

@@ -54,6 +54,8 @@ public class StudentService
             for (Course course : student.getCourses()) {
                 System.out.println(course);
             }
+            //System.out.println("Courses: " + student.getCourses());
+            //System.out.println("Courses: " + student.getApprovedCourses());
             System.out.println();
         }
         //end of TODO

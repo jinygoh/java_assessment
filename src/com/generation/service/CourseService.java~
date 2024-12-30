@@ -65,7 +65,7 @@ public class CourseService
         return null;
     }
 
-    //this method enrolls a Student object to a specific Course by adding the Student to the list of enrolled students associated with the courseId. If the courseId doesn't exist in the enrolledStudents Map, it creates a new list for that courseId.
+    //adds a student to the list of enrolled students for a given course.
     public void enrollStudent( String courseId, Student student )
     {
         if ( !enrolledStudents.containsKey( courseId ) )

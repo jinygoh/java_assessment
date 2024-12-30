@@ -1,15 +1,13 @@
 package com.generation.model;
 
+//Represents a course with attributes like code, name, credits, and a module.
+//Course.java has a reference to a Module.java object, which represents the module that the course belongs to.
 public class Course
 {
     private final String code;
-
     private final String name;
-
     private final int credits;
-
     private final Module module;
-
 
     public Course( String code, String name, int credits, Module module )
     {

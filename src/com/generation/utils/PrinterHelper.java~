@@ -57,7 +57,7 @@ public class PrinterHelper
         }while (birthDate == null);
         // end of TODO
 
-        // prints the new student that is just registered
+
         System.out.println( "|-------------------------------------|" );
         Student student = new Student( id, name, email, birthDate );
         System.out.println( "Student Successfully Registered! " );

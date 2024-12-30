@@ -1,0 +1,103 @@
+package com.generation.service;
+
+import com.generation.model.Course;
+import com.generation.model.Module;
+import com.generation.model.Student;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+//This class is a test class for the CourseService.
+public class CourseServiceTest {
+
+    //The service being tested.
+    private CourseService courseService;
+
+    @BeforeEach
+    public void setup() {
+        // Create a new instance of the CourseService for each test
+        courseService = new CourseService();
+    }
+
+    // Tests the registration of a new course.
+    @Test
+    public void testRegisterCourse() {
+        // Create a new course
+        Course course = new Course("TEST-1", "Test Course", 9, new Module("TEST", "Test Module", "Test module description"));
+
+        // Register the course using the CourseService
+        courseService.registerCourse(course);
+
+        // Verify that the course is successfully registered by retrieving it from the CourseService
+        // If the course is registered, the getCourse method should not return null
+        assertNotNull(courseService.getCourse("TEST-1"));
+    }
+
+    // Test case for the getCourse() method
+    @Test
+    public void testGetCourse() {
+        // Create a new course
+        Course course = new Course("TEST-1", "Test Course", 9, new Module("TEST", "Test Module", "Test module description"));
+
+        // Register the course
+        courseService.registerCourse(course);
+
+        // Check if the course is retrieved correctly
+        assertEquals(course, courseService.getCourse("TEST-1"));
+    }
+
+    @Test
+    public void testEnrollStudent() throws ParseException {
+        // Create a new course
+        Course course = new Course("TEST-1", "Test Course", 9, new Module("TEST", "Test Module", "Test module description"));
+        courseService.registerCourse(course);
+
+        // Create a new student
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date birthDate = dateFormat.parse("01/01/1990");
+        Student student = new Student("1", "John Doe", "john.doe@example.com", birthDate);
+
+        // Enroll the student in the course
+        courseService.enrollStudent("TEST-1", student);
+
+        // Check if the student is enrolled
+        assertTrue(courseService.showEnrolledStudents("TEST-1").contains(student));
+    }
+
+    @Test
+    public void testShowEnrolledStudents() {
+        // Create a new course
+        Course course = new Course("TEST-1", "Test Course", 9, new Module("TEST", "Test Module", "Test module description"));
+        courseService.registerCourse(course);
+
+        // Create a new student
+        Student student = new Student("John Doe", "john.doe@example.com");
+
+        // Enroll the student in the course
+        courseService.enrollStudent("TEST-1", student);
+
+        // Check if the student is shown as enrolled
+        assertNotNull(courseService.showEnrolledStudents("TEST-1"));
+    }
+
+    @Test
+    public void testShowSummary() {
+        // Create a new course
+        Course course = new Course("TEST-1", "Test Course", 9, new Module("TEST", "Test Module", "Test module description"));
+        courseService.registerCourse(course);
+
+        // Create a new student
+        Student student = new Student("John Doe", "john.doe@example.com");
+
+        // Enroll the student in the course
+        courseService.enrollStudent("TEST-1", student);
+
+        // Check if the summary is shown correctly
+        assertNotNull(courseService.showSummary());
+    }
+}
